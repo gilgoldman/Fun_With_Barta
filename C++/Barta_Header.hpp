@@ -36,3 +36,16 @@ string reverseAString(string toBeReversed)
 
 	return stringInReverse;
 }
+
+// Get ASCII value of a string
+int convertToASCII(string toBeASCIID)
+{
+	unsigned int ASCIIValue(0);
+	
+	for (unsigned int i = 0; i < toBeASCIID.length(); ++i)
+	{
+		char c = toBeASCIID.at(i); // Grabs a specific character
+		ASCIIValue = ASCIIValue + int(c); // Adds character's value in ASCII to the sum
+	}
+	return ASCIIValue;
+}

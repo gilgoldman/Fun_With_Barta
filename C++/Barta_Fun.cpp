@@ -26,9 +26,10 @@ int main()
 	cout << userInputString.length() << " Is the length of the string" << '\n';
 
 	// Print string in reverse.
+	cout << reverseAString(userInputString) << " Is the string in reverse" << '\n';
 	//string userInputStringReversed = reverse(userInputString.begin(), userInputString.end()); // This could work, but doesn't
 																								// Gotta check why, it's nicer than mine
-	cout << reverseAString(userInputString) << " Is the string in reverse" << '\n';
+	cout << convertToASCII(userInputString) << " Is the value of the string in ASCII" << '\n';
 
 
 	return 0;
