@@ -2,6 +2,7 @@
 
 // Includes
 #include <iostream>
+#include <string> // For strings and manipulation of strings
 
 
 // Namespaces
@@ -23,3 +24,15 @@ string getInputFromUser()
 	return inputFromUser;
 }
 
+// Reverse order of string
+string reverseAString(string toBeReversed)
+{
+	unsigned int i;
+	int j(toBeReversed.length()-1); // Counters
+	string stringInReverse (toBeReversed.length(), ' '); // Fills stringInReverse with empty characters to the length of toBeReversed
+
+	for (i = 0; i < toBeReversed.length(); ++i, --j)
+		stringInReverse.at(j) = toBeReversed.at(i);
+
+	return stringInReverse;
+}

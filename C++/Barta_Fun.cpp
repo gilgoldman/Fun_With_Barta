@@ -3,7 +3,6 @@
 
 // Includes 
 #include <iostream>
-#include "string" // For strings and manipulation of strings
 #include "Barta_Header.hpp" // For all the functions
 
 // Namespaces
@@ -23,8 +22,15 @@ int main()
 	// Step 1 = print the input string
 	cout << userInputString << " Is the string you have inserted" << '\n';
 	
-	// print string length
+	// Print string length
 	cout << userInputString.length() << " Is the length of the string" << '\n';
+
+	// Print string in reverse.
+	//string userInputStringReversed = reverse(userInputString.begin(), userInputString.end()); // This could work, but doesn't
+																								// Gotta check why, it's nicer than mine
+	cout << reverseAString(userInputString) << " Is the string in reverse" << '\n';
+
+
 	return 0;
 }
 
