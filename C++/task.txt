@@ -1,0 +1,10 @@
+Write a program to take a string, and print:
+1) Itself (abcde)
+2) It's length (5)
+3) Itself in reverse order (edcba)
+4) Its value in ASCII (495 (=97+98+99+100+101))
+5) Itself with shifts 1-5 (abcde
+						   bcdea
+						   cdeab
+						   deabc
+						   eabcd)
