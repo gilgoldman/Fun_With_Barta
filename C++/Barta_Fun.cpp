@@ -3,6 +3,7 @@
 
 // Includes 
 #include <iostream>
+#include <algorithm>
 
 // Namespaces
 using namespace std;
@@ -11,8 +12,9 @@ using namespace std;
 void printWelcome();
 void printGoodbye();
 string getInputFromUser();
-string reverseAString(string &toBeReversed);
-
+string reverseAString(const string &toBeReversed);
+string shiftAString(string &toBeShifted, unsigned int &shiftByHowMuch);
+int valueInASCII(string &toBeASCIID);
 
 
 // Main function body
@@ -23,18 +25,29 @@ int main()
 
 	// Get and print input from user
 	const string userInput = getInputFromUser();
-//	string *userInputPtr;
-	cout << userInput << " Is the selected string" << '\n';
+
+	// Establish pointer to constant user Input
+	string const *pointerToUserInput = nullptr;
+	pointerToUserInput = &userInput;
+	// Return the selected string
+	cout << *pointerToUserInput << " Is the selected string" << '\n';
 
 	// Print the string in reverse
 	cout << reverseAString(userInput) << " Is the string in reverse" << '\n';
 
+	// Print the value in ASCII
+	//cout << valueInASCII(*pointerToUserInput) << " Is the string value in ASCII" << '\n';
 
-	// Print goodbye message
+	// Shift a string by a specified amount
+	/*for (unsigned int shiftCounter = 0; shiftCounter < userInput.length(); ++shiftCounter)
+	{
+		cout << shiftAString(*pointerToUserInput, shiftCounter) << " Is the string shifted by " << shiftCounter << " Places" << endl;
+	}
+*/
+	// Print goodbye message and quit
 	printGoodbye();
 	return 0;
 }
-
 
 
 // Function definitions
@@ -42,7 +55,7 @@ int main()
 void printWelcome()
 {
 	cout << "Hello! This is the thingy built for Barta" << '\n';
-	cout << "This is version 0.2, which experiments with pointers and references" << endl;
+	cout << "This is version 0.11, which experiments with passing references" << endl;
 }
 
 // Prints a goodbye message
@@ -61,18 +74,39 @@ string getInputFromUser()
 }
 
 // Reverses a string
-string reverseAString(string &toBeReversed)
+string reverseAString(const string &toBeReversed)
 {
-	// Counters
-	unsigned char i(0);
-	unsigned char j(toBeReversed.length()-1);
-	string stringInReverse = toBeReversed; 
+	// Local string definitions
+	string toBeReversedLocal = toBeReversed;
+	string stringInReverse (toBeReversedLocal.length(), ' ');
 
-	for (i = 0; i < toBeReversed.length(); ++i, --j)
+	// Counters
+	unsigned char i(0), j(toBeReversedLocal.length()-1);
+
+	for (i = 0; i < toBeReversedLocal.length(); ++i, --j)
 	{
-		stringInReverse.at(j) = toBeReversed.at(i);
+		stringInReverse.at(j) = toBeReversedLocal.at(i);
 	}
 	return stringInReverse;
+}
+
+// Present value in ASCII
+int valueInASCII(string &toBeASCIID)
+{
+	unsigned int ASCIIValue(0);
+	for (unsigned char i = 0; i < toBeASCIID.length(); ++i)
+	{
+		char c = toBeASCIID.at(i); // Grabs a specific character
+		ASCIIValue = ASCIIValue + int(c); // Adds character's value in ASCII to the sum
+	}
+	return ASCIIValue;
+}
+
+// Rotate string by a predetermined value
+string shiftAString(string &toBeShifted, unsigned char &shiftByHowMuch)
+{
+	rotate(toBeShifted.begin(), toBeShifted.begin()+shiftByHowMuch, toBeShifted.end()); // Shift string by a predetermined number
+	return toBeShifted;
 }
 
 
