@@ -8,3 +8,8 @@ Write a program to take a string, and print:
 						   cdeab
 						   deabc
 						   eabcd)
+
+
+Notes:
+1) No for loops without brackets
+2) const reference > value

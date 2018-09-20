@@ -3,46 +3,76 @@
 
 // Includes 
 #include <iostream>
-#include "Barta_Header.hpp" // For all the functions
 
 // Namespaces
 using namespace std;
+
+// Function declarations
+void printWelcome();
+void printGoodbye();
+string getInputFromUser();
+string reverseAString(string &toBeReversed);
 
 
 
 // Main function body
 int main()
 {
-	// Welcome User
+	// Print welcome message
 	printWelcome();
-	
-	// Get user input
-	string userInputString = getInputFromUser();
-	
-	// Task 1 - print the input string
-	cout << userInputString << " Is the string you have inserted" << '\n';
-	
-	// Task 2 - Print string length
-	cout << userInputString.length() << " Is the length of the string" << '\n';
 
-	// Task 3 - Print string in reverse.
-	//string userInputStringReversed = reverse(userInputString.begin(), userInputString.end()); // This could work, but doesn't
-																								// Gotta check why, it's nicer than mine
-	cout << reverseAString(userInputString) << " Is the string in reverse" << '\n';
+	// Get and print input from user
+	const string userInput = getInputFromUser();
+//	string *userInputPtr;
+	cout << userInput << " Is the selected string" << '\n';
 
-	// Task 4 - Print string value in ASCII
-	cout << convertToASCII(userInputString) << " Is the value of the string in ASCII" << '\n';
+	// Print the string in reverse
+	cout << reverseAString(userInput) << " Is the string in reverse" << '\n';
 
-	// Task 5 - Print the string shifted all around
-	for (unsigned int shiftCounter = 0; shiftCounter < userInputString.length(); ++shiftCounter)
-		cout << shiftAString(userInputString, shiftCounter) << " Is the string shifted by " << shiftCounter << '\n';
 
-	// Print a goodbye
+	// Print goodbye message
 	printGoodbye();
-
 	return 0;
 }
 
 
+
+// Function definitions
+// Prints a welcome message
+void printWelcome()
+{
+	cout << "Hello! This is the thingy built for Barta" << '\n';
+	cout << "This is version 0.2, which experiments with pointers and references" << endl;
+}
+
+// Prints a goodbye message
+void printGoodbye() 
+{
+	cout << "That's all folks! It was a pleasure seeing you here, please come again!" << endl;
+}
+
+// Retrieves input from user and stores in a string
+string getInputFromUser()
+{
+	string inputFromUser;
+	cout << "Please insert a string input:" << '\n';
+	cin >> inputFromUser;
+	return inputFromUser;
+}
+
+// Reverses a string
+string reverseAString(string &toBeReversed)
+{
+	// Counters
+	unsigned char i(0);
+	unsigned char j(toBeReversed.length()-1);
+	string stringInReverse = toBeReversed; 
+
+	for (i = 0; i < toBeReversed.length(); ++i, --j)
+	{
+		stringInReverse.at(j) = toBeReversed.at(i);
+	}
+	return stringInReverse;
+}
 
 
